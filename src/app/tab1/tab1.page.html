@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Configurações
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>Defina os preços dos Armadores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Quando so preços dos armadores forem mudados clique em salvar para salvar os preços no arquivo de
+        Configurações</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title text-center style="z-index: 1000">porcentagens de alocação</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content style="margin-top: -45px">
+      <ion-row>
+        <ion-col padding>
+          <ion-item>
+            <ion-label position="floating">CMA-CGM</ion-label>
+            <ion-input type="number" [(ngModel)]="CMA_CGM_qty"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col padding>
+          <ion-item>
+            <ion-label position="floating">HamburgSud</ion-label>
+            <ion-input type="number" [(ngModel)]="hamburgSud_qty"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col padding>
+          <ion-item>
+            <ion-label position="floating">Hapag Lloyd</ion-label>
+            <ion-input type="number" [(ngModel)]="hapagLloyd_qty"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col padding>
+          <ion-item>
+            <ion-label position="floating">MSC</ion-label>
+            <ion-input type="number" [(ngModel)]="MSC_qty"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col padding>
+          <ion-item>
+            <ion-label position="floating">MAERSK</ion-label>
+            <ion-input type="number" [(ngModel)]="maersk_qty"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+
+    <ion-card-content>
+      <div texte-center>
+        <hot-table #table [colHeaders]="true" [rowHeaders]="false" [startCols]="7" [startRows]="10" [settings]="settings"
+          [data]="prices">
+          <hot-column data="startingPoint" title="Port Origin"></hot-column>
+          <hot-column data="endPoint" title="Port Destination"></hot-column>
+          <hot-column data="CMA_CGM_price" title="CMA-CGM Price"></hot-column>
+          <hot-column data="hamburgSud_price" title="Hamburg Sud Price"></hot-column>
+          <hot-column data="hapagLloyd_price" title="Hapag Lloyd Price"></hot-column>
+          <hot-column data="MSC_price" title="MSC Price"></hot-column>
+          <hot-column data="maersk_price" title="Maersk Price"></hot-column>
+        </hot-table>
+
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="ConfirmSave()" expand="full">
+    Save
+    <ion-icon slot="end" name="save"></ion-icon>
+  </ion-button>
+</ion-content>

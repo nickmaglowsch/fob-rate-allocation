@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      KPIs
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="randomizeColors()" padding>
+    change color
+  </ion-button>
+  <ion-select [(ngModel)]="gfxType" placeholder="escolha o tipo de grafico" (ionChange)="ngAfterViewInit()">
+    <ion-select-option value="line">Linhas</ion-select-option>
+    <ion-select-option value="bar">Barras</ion-select-option>
+    <ion-select-option value="doughnut">Circulo</ion-select-option>
+    <ion-select-option value="pie">Pizza</ion-select-option>
+    <ion-select-option value="radar">Radar</ion-select-option>
+    <ion-select-option value="polarArea">Polar Area</ion-select-option>
+  </ion-select>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> Total</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1400px;">
+      <canvas id="total"></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> CMA Chart</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1400px;">
+      <canvas id="CMA_CGM_prices"></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Msc Chart</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1400px;">
+      <div class="chart-container">
+        <canvas id="MSC_prices"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>HamburgSud</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1400px;">
+      <div class="chart-container">
+        <canvas id="hamburgSud_prices"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>hapaglloyd</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1400px;">
+      <div class="chart-container">
+        <canvas id="hapagLloyd_prices"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>maersk</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1400px;">
+      <div class="chart-container">
+        <canvas id="maersk_prices"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Sugestões
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title text-center style="z-index: 1000">Quantidade de Containers</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content >
+      <hot-table #table [colHeaders]="true" [rowHeaders]="false" [startCols]="3" [startRows]="10" [height]="200"
+        [width]="1900" [settings]="settings" [data]="dataset" [manualColumnResize]="true">
+        <hot-column width="100" data="contractNo" title="contractNo"></hot-column>
+        <hot-column width="50" data="contractSeq" title="SEQ"></hot-column>
+        <hot-column width="150" data="startingPoint" title="Port Origin"></hot-column>
+        <hot-column width="150" data="endPoint" title="Port Destination"></hot-column>
+        <hot-column width="100" data="qty" title="container qty"></hot-column>
+      </hot-table>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="createRates()" padding > Gerar recomendações</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title text-center style="z-index: 1000">Recomendações</ion-card-title>
+      <ion-card-subtitle>Edite e salve as recomendações</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <hot-table [colHeaders]="true" [rowHeaders]="false" [startCols]="3" [startRows]="10" [height]="200" [width]="1900"
+        [settings]="settings" [data]="rates">
+        <hot-column width="100" data="contractNo" title="contractNo"></hot-column>
+        <hot-column width="50" data="contractSeq" title="SEQ"></hot-column>
+        <hot-column width="150" data="startingPoint" title="Port Origin"></hot-column>
+        <hot-column width="150" data="endPoint" title="Port Destination"></hot-column>
+        <hot-column width="100" data="qty" title="container qty"></hot-column>
+        <hot-column width="150" data="armador" title="Shipping line"></hot-column>
+        <hot-column width="100" data="pricePerContainer" title="Price Per Container"></hot-column>
+        <hot-column width="100" data="totalPrice" title="Total"></hot-column>
+      </hot-table>
+      <ion-button (click)="ConfirmSave()" padding >Salvar</ion-button>
+      <ion-button (click)="saveAsCSV()" padding color="success">exportar para excel</ion-button>
+      <ion-button (click)="deleteRecomendation()" color="danger" padding >Deletar recomendações</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Distribuição de armadores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="width: 1200px;">
+      <canvas id="armadores"></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
