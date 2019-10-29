@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { NgxElectronModule, ElectronService } from 'ngx-electron';
+// import { NgxElectronModule, ElectronService } from 'ngx-electron';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,11 +14,13 @@ import { StaticConstatns } from './staticConstants';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, NgxElectronModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule,
+    // NgxElectronModule, 
+    IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
-    ElectronService,
+    // ElectronService,
     StaticConstatns,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

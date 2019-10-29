@@ -41,6 +41,7 @@
     "angular-6-datatable": "^0.8.0",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
+    "firebase": "^7.2.0",
     "handsontable": "^6.2.2",
     "nexe": "^2.0.0-rc.34",
     "ngx-electron": "^2.1.1",

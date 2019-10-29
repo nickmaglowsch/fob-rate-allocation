@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab2Page {
   chartFactory: ChartFactory = new ChartFactory()
-  constructor(private _staticConstatns: StaticConstatns, private alertCtrl: AlertController) {
+  constructor (private _staticConstatns: StaticConstatns, private alertCtrl: AlertController) {
 
   }
   dataset: any[] = [
@@ -38,23 +38,23 @@ export class Tab2Page {
 
   onlyOneShipper(prices) {
     let zeros = 0
-    if (0 == prices.CMA_CGM_price.value){
+    if (0 == prices.CMA_CGM_price.value) {
       zeros++
     }
-    if (0 == prices.hamburgSud_price.value){
+    if (0 == prices.hamburgSud_price.value) {
       zeros++
     }
-    if (0 == prices.MSC_price.value){
+    if (0 == prices.MSC_price.value) {
       zeros++
     }
-    if (0 == prices.hapagLloyd_price.value){
+    if (0 == prices.hapagLloyd_price.value) {
       zeros++
     }
-    if(0 == prices.maersk_price.value){
+    if (0 == prices.maersk_price.value) {
       zeros++
     }
-    console.log(zeros==4);
-    
+    console.log(zeros == 4);
+
     return zeros == 4
   }
   returnPrice(prices) {
@@ -78,7 +78,6 @@ export class Tab2Page {
       let thisPrice = this._staticConstatns.config.priceList.find(obj => obj.key.toLocaleUpperCase() == key.toLocaleUpperCase())
       if (this.onlyOneShipper(thisPrice)) {
         const singleShipper = this.returnPrice(thisPrice)
-        console.log("single",singleShipper)
         this._staticConstatns.allocContainerByName(singleShipper.name, Number(data.qty))
         const newItem = Object.assign({}, { data, armador: singleShipper.name, pricePerContainer: singleShipper.value, totalPrice: data.qty * singleShipper.value });
 
@@ -100,7 +99,7 @@ export class Tab2Page {
       let key = this.sanitizer.createKeys(data.startingPoint.toUpperCase().trim(), data.endPoint.toUpperCase().trim())
       let thisPrice = this._staticConstatns.config.priceList.find(obj => obj.key.toLocaleUpperCase() == key.toLocaleUpperCase())
       let bestPrice = this.findBestPrice(thisPrice, Number(data.qty))
-      console.log()
+
       this._staticConstatns.allocContainerByName(bestPrice.name, Number(data.qty))
       const newItem = Object.assign({}, { data, armador: bestPrice.name, pricePerContainer: bestPrice.value, totalPrice: data.qty * bestPrice.value });
 

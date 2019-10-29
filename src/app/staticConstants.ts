@@ -1,14 +1,15 @@
 import { Config, Recomendations } from "./interfaces";
-import { ElectronService } from 'ngx-electron';
+// import { ElectronService } from 'ngx-electron';
 import { Injectable } from "@angular/core";
-
+import { FIREBASE_CONFIG } from './prod'
+import * as firebase from 'firebase'
 
 @Injectable()
 export class StaticConstatns {
 
     fs
-    constructor(private _electronService: ElectronService) {
-        this.fs = _electronService.remote.require('fs');
+    constructor (/*private _electronService: ElectronService*/) {
+        // this.fs = _electronService.remote.require('fs');
         if (localStorage.getItem("StaticConstatns")) {
             this.config = JSON.parse(localStorage.getItem("StaticConstatns"))
         }
@@ -32,7 +33,7 @@ export class StaticConstatns {
         }
 
     public allocContainerByName(armadorName, containersToAlloc) {
-        
+
         switch (armadorName) {
             case "CMA_CGM":
                 this.config.CMA_CGM_qty.value = this.config.CMA_CGM_qty.value - containersToAlloc;
@@ -74,10 +75,11 @@ export class StaticConstatns {
 
     public saveToFile(): any {
         console.log("saving...")
+        firebase.database().ref('config/-LrHISHPUwWBlBAkPrQE').update(this.config)
         // localStorage.setItem("StaticConstatns", JSON.stringify(this.config))
-        this.fs.writeFile("./options.json", JSON.stringify(this.config), function (err) {
-            if (err) { alert("erro no arquivo"); return }
-        })
+        // this.fs.writeFile("./options.json", JSON.stringify(this.config), function (err) {
+        //     if (err) { alert("erro no arquivo"); return }
+        // })
     }
 
     public resetLocalStorage() {
